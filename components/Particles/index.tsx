@@ -36,14 +36,13 @@ const Particle = () => {
         } as CSSProperties
       }
       className="absolute rounded-full bg-white w-[var(--size)] h-[var(--size)] opacity-[var(--opacity)] top-[var(--y)] left-[var(--x)] animate-pulse duration-1000 ease-in-out"
-      aria-hidden
     />
   );
 };
 
 export default function Particles({ quantity = 10, className, ...props  }: ParticlesProps) {
   return (
-  <div className={cn("w-full h-full min-h-4", className)} {...props}>
+  <div className={cn("w-full h-full min-h-4 pointer-events-none z-10", className)} {...props}>
     <div className="w-full h-full relative">
         {Array.from({ length: quantity }).map((_, index: number) => (
             <Particle key={index} />
