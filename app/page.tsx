@@ -7,6 +7,7 @@ import BlurredText from "@/components/BlurredText";
 import Features from "@/components/Features";
 import ShowcaseImage from "@/components/ShowcaseImage";
 import Opinions from "@/components/Opinions";
+import Footer from "@/components/Footer";
 const textVariants: Variants = {
   initial: {
     opacity: 0,
@@ -58,6 +59,7 @@ export default function App() {
         <Features />
         <Opinions />
       </main>
+      <Footer />
     </div>
   );
 }

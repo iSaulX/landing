@@ -67,9 +67,9 @@ export default function Opinions(){
                     />
                 ))}
             </Marquee>
-            <div className="flex flex-col items-center w-full absolute bottom-0 left-0 py-24 justify-center bg-gradient-to-t from-black from-20% inset-x-2 to-transparent">
+            <div className="flex flex-col items-center w-full absolute bottom-0 left-0 py-24 justify-center bg-gradient-to-t dark:from-black from-white from-20% inset-x-2 to-transparent">
                 <Heart2 primaryColor="red"  size={60}/>
-                <h3 className="font-extrabold text-4xl text-center">Words thas speaks for itself.</h3>
+                <h3 className="font-extrabold text-4xl text-center">Words that speaks for itself.</h3>
                 <p className="text-neutral-400 font-semibold">See why our customers love us. </p>
             </div>
         </section>
