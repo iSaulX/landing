@@ -6,6 +6,7 @@ import GradientButton from "@/components/GradientButton";
 import BlurredText from "@/components/BlurredText";
 import Features from "@/components/Features";
 import ShowcaseImage from "@/components/ShowcaseImage";
+import Opinions from "@/components/Opinions";
 const textVariants: Variants = {
   initial: {
     opacity: 0,
@@ -55,6 +56,7 @@ export default function App() {
           quantity={100}
         />
         <Features />
+        <Opinions />
       </main>
     </div>
   );

@@ -13,23 +13,24 @@ export type MarqueeProps = {
 export default function Marquee({
     children, 
     className, 
-    duration = 10, 
+    duration = 40, 
     repeat = 4, 
     direction = "left",
     ...props
 }: MarqueeProps){
     return ( 
-        <div className={cn("overflow-hidden flex items-center justify-center w-full h-full p-3 gap-4", className)} {...props}>
+        <div className={cn("overflow-hidden flex flex-row items-center justify-center w-full  gap-2", className)} {...props}>
             {Array.from({ length: repeat }).map((_, index) => (
                 <motion.div key={index} 
                 animate={{
                     x: direction === "left" ? ["100%", "-100%"] : ["-100%", "100%"],
-                    transition: {
-                        duration: duration,
-                        ease: "linear",
-                        repeat: Infinity,
-                    },
                 }}
+                transition={{
+                    duration: duration,
+                    ease: "linear",
+                    repeat: Infinity,
+                }}
+                className="flex flex-row gap-2"
                 >
                     {children}
                 </motion.div>
