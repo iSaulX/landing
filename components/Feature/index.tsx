@@ -25,7 +25,7 @@ export default function Feature({ title, description, logo, time = 8 }: FeatureP
         return () => clearInterval(interval);
     }, [incrementProgress, time]);
     return ( 
-        <Card className="w-full border-1 dark:border-gray-700 border-gray-200" isPressable>
+        <Card className="w-full border-1 dark:border-gray-700 border-gray-200 hover:bg-gradient-to-t from-secondary-400  to-transparent to-20%" isPressable>
         <CardBody>
           <h3 className="font-semibold font-mono text-xl">{title}</h3>
           <p className="text-neutral-400 text-sm">

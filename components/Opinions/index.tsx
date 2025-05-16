@@ -1,7 +1,7 @@
 "use client"; 
 import Marquee from "../Marquee";
 import OpinionCard from "../OpinionCard";
-
+import { Heart2 } from "react-iconly";
 export default function Opinions(){
     const opinions = [
         
@@ -68,7 +68,9 @@ export default function Opinions(){
                 ))}
             </Marquee>
             <div className="flex flex-col items-center w-full absolute bottom-0 left-0 py-24 justify-center bg-gradient-to-t from-black from-20% inset-x-2 to-transparent">
-                <h3 className="font-extrabold text-4xl">Words thas speaks for itself.</h3>
+                <Heart2 primaryColor="red"  size={60}/>
+                <h3 className="font-extrabold text-4xl text-center">Words thas speaks for itself.</h3>
+                <p className="text-neutral-400 font-semibold">See why our customers love us. </p>
             </div>
         </section>
     )
