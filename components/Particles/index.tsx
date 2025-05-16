@@ -35,7 +35,7 @@ const Particle = () => {
           "--opacity": `${opacity}%`,
         } as CSSProperties
       }
-      className="absolute rounded-full bg-white w-[var(--size)] h-[var(--size)] opacity-[var(--opacity)] top-[var(--y)] left-[var(--x)] animate-pulse duration-1000 ease-in-out"
+      className="absolute rounded-full dark:bg-white bg-black w-[var(--size)] h-[var(--size)] opacity-[var(--opacity)] top-[var(--y)] left-[var(--x)] animate-pulse duration-1000 ease-in-out"
     />
   );
 };

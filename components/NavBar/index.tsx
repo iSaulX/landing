@@ -5,6 +5,11 @@ import {
     NavbarContent,
     NavbarItem,
     Switch,
+    NavbarMenu, 
+    NavbarMenuToggle, 
+    NavbarMenuItem, 
+    Link, 
+    Divider
 } from "@heroui/react";
 import type { ComponentPropsWithoutRef, FC } from "react";
 import { useTheme } from "next-themes";
@@ -68,11 +73,12 @@ export default function NavBar() {
 
     return (
         <Navbar isBordered isBlurred>
+            <NavbarMenuToggle className="flex md:hidden" />
             <NavbarBrand>
                 <AcmeLogo aria-hidden />
                 <span className="font-bold text-lg">ACME</span>
             </NavbarBrand>
-            <NavbarContent justify="center" className="*:font-semibold">
+            <NavbarContent justify="center" className="*:font-semibold hidden md:flex">
                 <NavbarItem>Features</NavbarItem>
                 <NavbarItem className="text-primary">Customers</NavbarItem>
                 <NavbarItem>Pricing.</NavbarItem>
@@ -92,6 +98,25 @@ export default function NavBar() {
                     aria-label="Toggle application theme."
                 />
             </NavbarContent>
+            <NavbarMenu className="flex items-start justify-center max-h-[25vh]">
+                <NavbarMenuItem>
+                    <Link href="#" className="font-extrabold  text-2xl text-foreground">
+                        Features.
+                    </Link>
+                </NavbarMenuItem>
+                <Divider />
+                <NavbarMenuItem>
+                    <Link href="#" className="font-extrabold text-2xl">
+                        Customers.
+                    </Link>
+                </NavbarMenuItem>
+                <Divider />
+                <NavbarMenuItem>
+                    <Link href="#" className="font-extrabold text-2xl w-full text-start text-foreground">
+                        Pricing.
+                    </Link>
+                </NavbarMenuItem>
+            </NavbarMenu>
         </Navbar>
     );
 }
