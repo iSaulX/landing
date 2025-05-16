@@ -51,7 +51,7 @@ const textVariants: Variants = {
 
 export default function Opinions() {
     return (
-        <section className="w-full p-2 flex flex-col items-center gap-3 justify-center relative">
+        <section className="w-full flex flex-col items-center gap-3 justify-center relative">
             <Marquee direction="right" duration={100}>
                 {opinions.map((opinion, index) => (
                     <OpinionCard
@@ -82,7 +82,7 @@ export default function Opinions() {
                     />
                 ))}
             </Marquee>
-            <div className="flex flex-col items-center w-full absolute bottom-0 left-0 py-24 justify-center bg-gradient-to-t dark:from-black from-white from-20% inset-x-2 to-transparent">
+            <div className="flex flex-col items-center w-full absolute bottom-0 px-3 left-0 py-24 justify-center bg-gradient-to-t dark:from-black from-white from-20% inset-x-2 to-transparent">
                 <Heart2 primaryColor="red" size={60} />
                 <motion.h3
                     variants={textVariants}
