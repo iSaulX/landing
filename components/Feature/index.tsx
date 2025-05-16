@@ -1,42 +1,72 @@
+"use client";
 import type { CardProps } from "@heroui/react";
 import { Card, CardBody, Progress } from "@heroui/react";
-import type  { ReactNode, Dispatch, SetStateAction } from "react";
-import { useCallback, useEffect, useState } from "react";
+import type { ReactNode, Dispatch, SetStateAction } from "react";
+import {  useEffect, useState, useRef } from "react";
+import { useInView } from "framer-motion";
 export type FeatureProps = {
-    title: string; 
-    description: string; 
-    logo?: ReactNode; 
-    time?: number; 
-}
+  title: string;
+  description: string;
+  logo?: ReactNode;
+  time?: number;
+  index: number;
+  currentValue: number;
+  setIndex: Dispatch<SetStateAction<number>>;
+} & CardProps;
 
-export default function Feature({ title, description, logo, time = 8 }: FeatureProps){
-    const [progress, setProgress] = useState<number>(0);
+export default function Feature({
+  title,
+  description,
+  logo,
+  time = 8,
+  index,
+  currentValue,
+  setIndex,
+  ...props
+}: FeatureProps) {
+  // Generate a prorgress value that goes between 0 and 100 and it should takes time seconds to reach 100
+  const [progress, setProgress] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isVisible = useInView(cardRef, {
+    once: true, 
+    margin: "-100px",
+  });
 
-    const incrementProgress = useCallback(() => {
-        setProgress((prev) => (prev < 100 ? prev + 1 : prev));
-    }, []);
-    const resetProgress = useCallback(() => {
-        setProgress(0);
-    }, []);
-    useEffect(() => {
+  useEffect(() => {
+    if (isVisible && currentValue === index){
         const interval = setInterval(() => {
-            incrementProgress();
-        }, );
-        return () => clearInterval(interval);
-    }, [incrementProgress, time]);
-    return ( 
-        <Card className="w-full border-1 dark:border-gray-700 border-gray-200 hover:bg-gradient-to-t from-secondary-400  to-transparent to-20%" isPressable>
-        <CardBody>
-          <h3 className="font-semibold font-mono text-xl">{title}</h3>
-          <p className="text-neutral-400 text-sm">
-            {description}
-          </p>
-          <Progress value={progress} className="h-2 my-1"
-          classNames={{
-            indicator: "bg-gradient-to-r from-blue-400 via-pink-400 to-purple-400 ",
-          }}
-          />
-        </CardBody>
-      </Card>
-    )
+            setProgress((prev) => {
+                if (prev >= 100) {
+                    clearInterval(interval);
+                    return 0;
+                }
+                return prev + 1;
+            })
+        }, 100)
+        if (progress >= 100) {
+            setIndex(index + 1);
+        }
+        return () => {
+            clearInterval(interval);
+        }
+    }
+  }, [isVisible, currentValue, index, progress]);
+
+  return (
+    <Card
+      className="w-full border-1 data-[selected=false]:dark:border-gray-700  data-[selected=false]:border-gray-200 data-[selected=true]:border-secondary data-[selected=true]:border-2 "
+      data-selected={index === currentValue}
+      isPressable
+      ref={cardRef}
+      {...props}
+    >
+      <CardBody>
+        <h3 className="font-semibold font-mono text-xl">{title}</h3>
+        <p className="text-neutral-400 text-sm">{description}</p>
+        {index === currentValue && (
+          <Progress value={progress} className="h-2 my-1" color="secondary" aria-label="Timeout progress" />
+        )}
+      </CardBody>
+    </Card>
+  );
 }

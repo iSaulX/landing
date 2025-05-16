@@ -2,10 +2,10 @@ import { Accordion, AccordionItem } from "@heroui/react";
 
 export default function FAQ(){
     return ( 
-        <section className="flex w-full items-center justify-center"> 
+        <section className="flex w-full items-center justify-center p-2"> 
         <div className="flex flex-col items-center justify-center w-full lg:w-4/6 gap-2">
         <p className="font-semibold text-primary font-mono">Frequently asked questions</p>
-        <h2 className="font-extrabold text-4xl">FAQ</h2>
+        <h2 className="font-extrabold text-7xl">FAQ</h2>
         <p className="font-semibold text-neutral-400">Here are some common questions and answers.</p>
         <Accordion variant="shadow">
             <AccordionItem title="What is your return policy?">
