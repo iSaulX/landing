@@ -4,9 +4,21 @@ import Image from "next/image";
 import { useState } from "react";
 import Feature from "../Feature";
 import { motion } from "framer-motion";
+import { GoHeartFill as Heart } from "react-icons/go";
+
+function Icon(){
+    return (
+        <div className="flex items-center justify-center relative">
+            <Heart className="absolute text-red-500 blur-sm text-xl"/>
+            <Heart className="text-red-500 text-xl" />
+        </div>
+    )
+}
+
+const features = ["Fast", "Reliable", "Efficient"];
 export default function Features() {
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-
+    const [diretion, setDirection] = useState<"left" | "right">("left");
     return (
         <section className="w-full border-1  bg-foreground-100/50 flex items-center justify-center p-5 border-y-1 dark:border-gray-900 border-gray-200">
             <div className="flex flex-col items-center justify-center gap-2 w-full lg:w-4/6">
@@ -17,41 +29,27 @@ export default function Features() {
                 <Divider className="my-4" />
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-4 w-full">
                     <div className="flex flex-col lg:w-1/2 w-full gap-2">
-                        <Feature
-                            title="Fast"
-                            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Animi, dolorem laborum magnam ad praesentium modi totam
-                    ducimus dolores doloribus dicta veritatis error eveniet."
-                            index={0}
-                            currentValue={currentImageIndex}
-                            setIndex={setCurrentImageIndex}
-                            onPress={() => setCurrentImageIndex(0)}
-                        />
-                        <Feature
-                            title="Reliable"
-                            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Animi, dolorem laborum magnam ad"
-                            index={1}
-                            currentValue={currentImageIndex}
-                            setIndex={setCurrentImageIndex}
-                            onPress={() => setCurrentImageIndex(1)}
-                        />
-                        <Feature
-                            title="Efficient"
-                            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Animi, dolorem laborum magnam ad ."
-                            index={2}
-                            currentValue={currentImageIndex}
-                            setIndex={setCurrentImageIndex}
-                            onPress={() => setCurrentImageIndex(2)}
-                        />
+                        {features.map((feature, index) => (
+                            <Feature
+                                key={index}
+                                title={feature}
+                                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                                logo={<Icon />}
+                                index={index}
+                                currentValue={currentImageIndex}
+                                onPress={() => {
+                                    setCurrentImageIndex(index);
+                                    setDirection(index > currentImageIndex ? "right" : "left");
+                                }}
+                            />
+                        ))}
                     </div>
                     <motion.div
                         className="lg:w-1/2 w-full"
                         key={currentImageIndex}
                         initial={{
                             opacity: 0,
-                            x: -20,
+                            x: diretion === "left" ? 50 : -50,
                             filter: "blur(6px)",
                         }}
                         whileInView={{
