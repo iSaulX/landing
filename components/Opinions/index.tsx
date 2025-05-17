@@ -51,7 +51,7 @@ const textVariants: Variants = {
 
 export default function Opinions() {
     return (
-        <section className="w-full flex flex-col items-center gap-3 justify-center relative">
+        <section className="w-full flex flex-col items-center gap-3 justify-center relative" id="customers">
             <Marquee direction="right" duration={100}>
                 {opinions.map((opinion, index) => (
                     <OpinionCard
@@ -90,6 +90,7 @@ export default function Opinions() {
                     whileInView="animate"
                     viewport={{ once: true }}
                     className="font-extrabold text-4xl text-center"
+                    
                 >
                     Words that speaks for itself.
                 </motion.h3>

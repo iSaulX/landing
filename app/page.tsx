@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import NavBar from "@/components/NavBar";
 import Particles from "@/components/Particles";
 import Features from "@/components/Features";
@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Intro from "@/components/Intro";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
+
 export default function App() {
   return (
     <div className="flex flex-col items-center justify-center gap-2 min-h-screen w-full bg-background text-foreground">
@@ -18,8 +19,8 @@ export default function App() {
           quantity={100}
         />
         <Features />
-        <Pricing />
         <Opinions />
+        <Pricing />
         <FAQ />
       </main>
       <Footer />

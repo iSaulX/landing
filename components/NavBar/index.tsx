@@ -8,8 +8,8 @@ import {
     NavbarMenu, 
     NavbarMenuToggle, 
     NavbarMenuItem, 
-    Link, 
-    Divider
+    Divider, 
+    Link
 } from "@heroui/react";
 import type { ComponentPropsWithoutRef, FC } from "react";
 import { useTheme } from "next-themes";
@@ -79,9 +79,15 @@ export default function NavBar() {
                 <span className="font-bold text-lg">ACME</span>
             </NavbarBrand>
             <NavbarContent justify="center" className="*:font-semibold hidden md:flex">
-                <NavbarItem>Features</NavbarItem>
-                <NavbarItem className="text-primary">Customers</NavbarItem>
-                <NavbarItem>Pricing.</NavbarItem>
+                <NavbarItem>
+                    <Link href="#features" className="text-foreground">Features</Link>
+                </NavbarItem>
+                <NavbarItem>
+                    <Link href="#customers" className="text-primary">Customers</Link>
+                </NavbarItem>
+                <NavbarItem>
+                    <Link href="#pricing" className="text-foreground">Pricing</Link>
+                </NavbarItem>
             </NavbarContent>
             <NavbarContent justify="end">
                 <Switch
@@ -100,19 +106,19 @@ export default function NavBar() {
             </NavbarContent>
             <NavbarMenu className="flex items-start justify-center max-h-[25vh]">
                 <NavbarMenuItem>
-                    <Link href="#" className="font-extrabold  text-2xl text-foreground">
+                    <Link href="#features" className="font-extrabold text-2xl text-foreground">
                         Features.
                     </Link>
                 </NavbarMenuItem>
                 <Divider />
                 <NavbarMenuItem>
-                    <Link href="#" className="font-extrabold text-2xl">
+                    <Link href="#customers" className="font-extrabold text-2xl">
                         Customers.
                     </Link>
                 </NavbarMenuItem>
                 <Divider />
                 <NavbarMenuItem>
-                    <Link href="#" className="font-extrabold text-2xl w-full text-start text-foreground">
+                    <Link href="#pricing" className="font-extrabold text-2xl w-full text-start text-foreground">
                         Pricing.
                     </Link>
                 </NavbarMenuItem>

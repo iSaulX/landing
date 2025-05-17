@@ -7,7 +7,7 @@ export default function Pricing() {
     return (
         <section className="w-full flex items-center justify-center">
             <div className="flex flex-col items-center justify-center gap-2 w-full lg:w-4/6 py-12 px-3">
-                <p className="text-small text-neutral-400">Pricing.</p>
+                <p className="text-small text-neutral-400" id="pricing">Pricing.</p>
                 <h2 className="font-extrabold text-5xl w-full text-center">
                     Simple, easy and transparent <GlowingText text="pricing" />.{" "}
                 </h2>
